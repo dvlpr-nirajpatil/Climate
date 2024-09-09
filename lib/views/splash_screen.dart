@@ -1,6 +1,4 @@
 import 'package:clima/controllers/weather_controller.dart';
-import 'package:clima/requests/weather_apis.dart';
-import 'package:clima/services/location_service.dart';
 import 'package:clima/views/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -21,10 +19,12 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
   }
 
-  changeScreen() async {
-    await LocationService().init();
-    WeatherController().getWeatherData();
-    GoRouter.of(context).goNamed(HomeScreen.id);
+  changeScreen() {
+    Future.delayed(Duration(seconds: 2), () async {
+      await WeatherController().getHourWeeklyWeather();
+      await WeatherController().getCurrentWeather();
+      GoRouter.of(context).goNamed(HomeScreen.id);
+    });
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:clima/consts/typo.dart';
+import 'package:clima/services/location_service.dart';
 import 'package:clima/views/home_screen.dart';
 import 'package:clima/views/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ get appContext => navigatorKey.currentState!.context;
 final logger = Logger();
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  LocationService().init();
   runApp(Clima());
 }
 

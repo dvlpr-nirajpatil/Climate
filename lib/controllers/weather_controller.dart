@@ -1,3 +1,5 @@
+import 'package:clima/models/current_weather_data_model.dart';
+import 'package:clima/models/weather_data_model.dart';
 import 'package:clima/requests/weather_apis.dart';
 import 'package:flutter/material.dart';
 
@@ -6,9 +8,14 @@ class WeatherController extends ChangeNotifier {
   WeatherController.internal();
   factory WeatherController() => instance;
 
-  var weatherData;
+  WeatherDataModel? weatherData;
+  CurrentWeatherDataModel? currentData;
 
-  getWeatherData() async {
-    weatherData = await WeatherApis().getCurrentWeatherRequest();
+  getHourWeeklyWeather() async {
+    weatherData = await WeatherApis().getHourWeeklyWeatherRequest();
+  }
+
+  getCurrentWeather() async {
+    currentData = await WeatherApis().getCurrentWeather();
   }
 }
