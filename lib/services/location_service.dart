@@ -43,19 +43,19 @@ class LocationService {
     showDialog(
       context: appContext,
       builder: (context) => AlertDialog.adaptive(
-        title: Text("Turn on your location service"),
+        title: const Text("Turn on your location service"),
         actions: [
           TextButton(
             onPressed: () {
               context.pop();
             },
-            child: Text("ok"),
+            child: const Text("ok"),
           ),
           TextButton(
             onPressed: () {
               Geolocator.openLocationSettings();
             },
-            child: Text("Setting"),
+            child: const Text("Setting"),
           )
         ],
       ),

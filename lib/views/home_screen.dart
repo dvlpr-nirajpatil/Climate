@@ -1,6 +1,7 @@
 import 'package:clima/consts/app_colors.dart';
 import 'package:clima/consts/assets.dart';
 import 'package:clima/consts/typo.dart';
+import 'package:clima/controllers/weather_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -96,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 )
               ],
             ),
-            Divider(
+            const Divider(
               height: 1,
               thickness: 0.30,
             ),
@@ -123,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             SizedBox(height: 98.h),
             Text(
-              "Montreal",
+              WeatherController().currentData!.name!,
               style: TextStyle(fontSize: 34.sp, color: Colors.white),
             ),
             SizedBox(
@@ -175,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> {
           decoration: BoxDecoration(
             border: Border.all(width: 1, color: Colors.white.withOpacity(0.20)),
             borderRadius: BorderRadius.circular(30.r),
-            color: Color(0xff48319D).withOpacity(0.20),
+            color: const Color(0xff48319D).withOpacity(0.20),
           ),
           width: 60.w,
           child: Column(
@@ -223,7 +224,7 @@ class _HomeScreenState extends State<HomeScreen> {
           decoration: BoxDecoration(
             border: Border.all(width: 1, color: Colors.white.withOpacity(0.20)),
             borderRadius: BorderRadius.circular(30.r),
-            color: Color(0xff48319D).withOpacity(0.20),
+            color: const Color(0xff48319D).withOpacity(0.20),
           ),
           width: 60.w,
           child: Column(

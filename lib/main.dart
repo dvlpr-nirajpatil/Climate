@@ -1,4 +1,5 @@
 import 'package:clima/consts/typo.dart';
+import 'package:clima/services/location_service.dart';
 import 'package:clima/views/home_screen.dart';
 import 'package:clima/views/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +12,8 @@ get appContext => navigatorKey.currentState!.context;
 final logger = Logger();
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  LocationService().init();
   runApp(Clima());
 }
 
@@ -22,12 +25,12 @@ class Clima extends StatelessWidget {
       GoRoute(
         path: '/',
         name: SplashScreen.id,
-        builder: (context, state) => SplashScreen(),
+        builder: (context, state) => const SplashScreen(),
       ),
       GoRoute(
         path: '/home',
         name: HomeScreen.id,
-        builder: (context, state) => HomeScreen(),
+        builder: (context, state) => const HomeScreen(),
       )
     ],
   );
@@ -35,12 +38,13 @@ class Clima extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(390, 844),
+      designSize: const Size(390, 844),
       builder: (context, child) => MaterialApp.router(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
             fontFamily: Typo.regular,
-            bottomSheetTheme:
-                BottomSheetThemeData(backgroundColor: Colors.transparent)),
+            bottomSheetTheme: const BottomSheetThemeData(
+                backgroundColor: Colors.transparent)),
         routerConfig: router,
       ),
     );
